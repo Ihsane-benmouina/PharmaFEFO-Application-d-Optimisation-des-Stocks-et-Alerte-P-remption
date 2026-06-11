@@ -9,7 +9,7 @@ class MouvementRepository {
         $this->db = Database::getConnection();
     }
 
-    
+    // Enregistrer un mouvement (ENTREE ou SORTIE)
     public function logMouvement($lotStockId, $type, $quantite) {
         $stmt = $this->db->prepare("
             INSERT INTO mouvements (lot_stock_id, type, quantite) 
@@ -18,5 +18,14 @@ class MouvementRepository {
         return $stmt->execute([$lotStockId, $type, $quantite]);
     }
 
-   
+    
+    public function getAllMouvements() {
+        return $this->db->query("
+            SELECT m.*, l.numero_lot, p.nom as produit_nom 
+            FROM mouvements m
+            JOIN lot_stocks l ON m.lot_stock_id = l.id
+            JOIN produits p ON l.produit_id = p.id
+            ORDER BY m.date_mouvement DESC
+        ")->fetchAll();
+    }
 }
