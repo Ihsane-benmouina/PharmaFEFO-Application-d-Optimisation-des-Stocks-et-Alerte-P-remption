@@ -66,16 +66,14 @@ pharmafefo/
 
 ## Diagramme de Classe
 
-![Diagramme de Classe](docs/clasee phamaFEFO.png)
-
+![alt text](docs/clasee phamaFEFO.png)
 ## Diagramme de Cas d’Utilisation
 
-![Use Case Diagram](docs/use case phamaFEFO.png)
+![alt text](docs/use case phamaFEFO.png)
 
 ## Diagramme ERD
 
-![ER Diagram](docs/ERD phamaFEFO.png)
-
+![alt text](image.png)
 ---
 
 ## Contexte du Projet
