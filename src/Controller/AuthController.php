@@ -30,7 +30,7 @@ class AuthController {
             }
         }
 
-        include __DIR__ . '/../../templates/dashboard/login.php';
+        include __DIR__ . '/../../templates/auth/login.php';
     }
 
     public function logout() {
