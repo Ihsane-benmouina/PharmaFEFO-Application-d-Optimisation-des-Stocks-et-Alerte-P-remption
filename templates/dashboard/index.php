@@ -87,7 +87,8 @@
                         <th class="py-3 px-4">Quantité Physique</th>
                         <th class="py-3 px-4">DLU (Péremption)</th>
                         <th class="py-3 px-4">Indicateur Diagnostic</th>
-                        <?php if (isset($_SESSION['user_role']) && in_array($_SESSION['user_role'], ['pharmacien', 'admin'])): ?>
+                        <!-- Modifié hna: ghir l-admin bo7do li ychouf l-colonne -->
+                        <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin'): ?>
                             <th class="py-3 px-5 text-right">Actions Restrictives</th>
                         <?php endif; ?>
                     </tr>
@@ -104,7 +105,7 @@
                         <?php foreach ($processedLots as $l): ?>
                             <tr class="hover:bg-slate-50/50 transition-colors duration-100">
                                 <td class="py-3.5 px-5">
-                                    <span class="font-bold text-slate-800 block"><?= htmlspecialchars($l['produit_nom']) ?></span>
+                                    <span class="font-bold text-slate-900 block"><?= htmlspecialchars($l['produit_nom']) ?></span>
                                     <span class="text-[10px] text-slate-400 mt-0.5 block">Stock ID: #<?= $l['id'] ?></span>
                                 </td>
                                 
@@ -145,11 +146,13 @@
                                     <?php endif; ?>
                                 </td>
                                 
-                                <?php if (isset($_SESSION['user_role']) && in_array($_SESSION['user_role'], ['pharmacien', 'admin'])): ?>
+                                <!-- Modifié hna: ghir l-admin bo7do li groups les actions dyal had td -->
+                                <?php if (isset($_SESSION['user_role']) && $_SESSION['user_role'] === 'admin'): ?>
                                     <td class="py-3.5 px-5 text-right">
                                         <?php 
                                         $isLotExpired = (isset($l['statut']) && $l['statut'] === 'EXPIRED') || (isset($l['badge_text']) && strpos($l['badge_text'], 'EXPIRED') !== false);
                                         
+                                        // Matla3 l-admin l-bton 7ta ykoun t-perima nican
                                         if ($isLotExpired): ?>
                                             <form method="POST" action="index.php?action=retirer-petime" class="inline">
                                                 <input type="hidden" name="lot_id" value="<?= $l['id'] ?>">
