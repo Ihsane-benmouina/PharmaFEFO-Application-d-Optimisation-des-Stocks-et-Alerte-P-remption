@@ -66,9 +66,7 @@ pharmafefo/
 
 ## Diagramme de Classe
 
-![
-    
-](<clasee phamaFEFO.png>)
+![classe pharmaFEFO.png](<clasee phamaFEFO.png>)
 ## Diagramme de Cas d’Utilisation
 
 ![use case phamaFEFO.png](<use case phamaFEFO.png>)
